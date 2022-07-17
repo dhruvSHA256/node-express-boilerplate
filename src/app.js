@@ -1,12 +1,13 @@
-const express = require("express");
-const mongoose = require('mongoose');
-const exampleRoute = require("./routes/example");
+import express from 'express';
+// import mongoose from "mongoose";
+import { router as exampleRoute } from "./routes/example";
+
+const PORT = process.env.PORT || 5000;
 
 // const User = require("./models/user");
 
-const PORT = process.env.PORT || 5000;
-const DB_USER = process.env.DB_USER;
-const DB_PASS = process.env.DB_PASS;
+// const DB_USER = process.env.DB_USER;
+// const DB_PASS = process.env.DB_PASS;
 
 // if (!DB_USER) {
 //     console.error(`[error]: The "DB_USER" environment variable is required`);
@@ -34,8 +35,21 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("", (_req, res) => {
-    res.send({ msg: "hello world" });
+
+app.get('/', (_req, res) => {
+    res.send('Received a GET HTTP method');
+});
+
+app.post('/', (_req, res) => {
+    res.send('Received a POST HTTP method');
+});
+
+app.put('/', (_req, res) => {
+    res.send('Received a PUT HTTP method');
+});
+
+app.delete('/', (_req, res) => {
+    res.send('Received a DELETE HTTP method');
 });
 
 app.use("/example", exampleRoute);

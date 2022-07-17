@@ -1,8 +1,9 @@
-const express = require("express");
+import express from 'express';
+
 const router = express.Router();
 
 router.get("/", (_req, res) => {
     res.render('example/hello');
 });
 
-module.exports = router;
+export { router }

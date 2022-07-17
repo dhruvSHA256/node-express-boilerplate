@@ -5,15 +5,23 @@
     "license": "MIT",
     "author": "author",
     "scripts": {
-        "app": "node app.js",
-        "start": "node app.js",
-        "dev": "ls *.js | entr -r node app.js",
+        "app": "node dist/app.js",
+        "start": "node dist/app.js",
+        "dev": "ls src/*.js | entr -r babel-node src/app.js",
+        "clean": "rm -rf dist",
+        "build": "yarn run clean && mkdir -p dist && babel src -s -D -d dist",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
         "ejs": "^3.1.8",
         "express": "^4.18.1",
         "mongoose": "^6.4.4"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.18.6",
+        "@babel/core": "^7.18.6",
+        "@babel/node": "^7.18.6",
+        "@babel/preset-env": "^7.18.6"
     },
     "engines": {
         "node": "18.x"
